@@ -27,7 +27,8 @@ nav .lg{font-size:20px}nav .r{display:flex;gap:22px}nav a{opacity:.88}nav a:hove
 .glow{position:absolute;left:50%;top:55%;width:90vmin;height:90vmin;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(229,50,45,.34),transparent 62%);animation:pulse 6s ease-in-out infinite alternate;will-change:transform,opacity}
 @keyframes pulse{from{opacity:.65}to{opacity:1}}
 .gt{background:linear-gradient(180deg,var(--red2) 5%,#c4201a 55%,#7d0e0b);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-.name{position:absolute;z-index:1;left:0;right:0;top:23vh;display:flex;justify-content:center;text-align:center;white-space:nowrap;font:800 clamp(84px,16vw,300px)/1 "Playfair Display",Georgia,serif;letter-spacing:-.045em;will-change:transform,opacity}
+.name{position:absolute;z-index:1;left:0;right:0;top:8vh;top:8svh;display:flex;justify-content:center;text-align:center;white-space:nowrap;font:800 clamp(84px,16vw,300px)/1 "Playfair Display",Georgia,serif;letter-spacing:-.045em;will-change:transform,opacity}
+.name .gt{background:none!important;color:#e5322d!important;-webkit-text-fill-color:#e5322d!important}
 .name span{display:inline-block;animation:sway 9s ease-in-out infinite alternate}
 @keyframes sway{from{transform:translateX(-1.2vw)}to{transform:translateX(1.2vw)}}
 .person{position:absolute;z-index:2;left:50%;bottom:0;height:90vh;height:90svh;width:min(96vw,calc(90vh*.95));transform:translateX(-50%);will-change:transform,opacity}
@@ -113,7 +114,7 @@ nav .lg{font-size:20px}nav .r{display:flex;gap:22px}nav a{opacity:.88}nav a:hove
  .about{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.big{min-height:36vh}
  .item{grid-template-columns:1fr;gap:12px}.stats3{grid-template-columns:1fr 1fr}
  nav .r{gap:14px;font-size:14px}
- .person{height:76vh;height:76svh}.name{top:19vh;font-size:clamp(68px,15vw,130px)}
+ .person{height:76vh;height:76svh}.name{top:19vh;top:19svh;font-size:clamp(68px,15vw,130px)}
  .sc{max-width:none;left:5vw;right:5vw;top:auto;bottom:6vh;text-align:left;padding:22px 20px;border-radius:18px;background:linear-gradient(0deg,rgba(5,4,4,.88),rgba(5,4,4,.55));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
  .s2{text-align:left}.s0,.s4{text-align:center}.s0{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0}
  .sc h2{font-size:clamp(44px,13vw,76px)}.sc p{margin-top:12px;font-size:16px}
@@ -173,7 +174,7 @@ nav .lg{font-size:20px}nav .r{display:flex;gap:22px}nav a{opacity:.88}nav a:hove
 <main id="home" class="view on">
  <div class="track" id="track"><div class="stage">
   <div class="glow" id="glow"></div>
-  <div class="name gt" id="name"><span>VIKAS</span></div>
+  <div class="name" id="name"><span class="gt">VIKAS</span></div>
   <div class="person" id="person"><img class="l1" data-img="A" alt="Vikas V T"><img class="l2" id="l2" data-img="B" alt="Vikas V T"></div>
   <div class="fade"></div>
   <div class="sc s0" id="s0"><p>Most people pick one path. I couldn't.</p><div class="cue">Scroll down</div></div>
@@ -318,7 +319,7 @@ nav .lg{font-size:20px}nav .r{display:flex;gap:22px}nav a{opacity:.88}nav a:hove
 const msgs={home:"Hey Vikas, I came through your portfolio. Can we connect?",tech:"Hey Vikas, I came through your career portfolio. Can we connect?",growth:"Hey Vikas, I came through your business portfolio. Can we connect?"};
 const $=id=>document.getElementById(id);
 const cl=x=>Math.max(0,Math.min(1,x)),sg=(p,a,b)=>cl((p-a)/(b-a)),lp=(a,b,t)=>a+(b-a)*t;
-const IM={S:"images/ai-impact-summit.jpg",A:"images/vikas-crossed-arms.webp",B:"images/vikas-phone.webp"};
+const IM={S:"images/ai-impact-summit.jpg",A:"images/vikas-crossed-arms-hd.webp",B:"images/vikas-phone-hd.webp"};
 document.querySelectorAll("[data-img]").forEach(i=>i.src=IM[i.dataset.img]);
 let cur=0;
 function route(){
@@ -341,7 +342,7 @@ function frame(){
     const r=tr.getBoundingClientRect(),st=tr.firstElementChild;
     st.className="stage"+(r.top<=0&&r.bottom>H?" fx":r.bottom<=H?" end":"");
     const tgt=cl(-r.top/(r.height-H));cur+=(tgt-cur)*.11;const p=cur;
-    const nm=sg(p,.1,.2);
+    const nm=sg(p,.76,.88);
     $("name").style.opacity=1-nm;$("name").style.transform=`translateY(${-nm*10}vh) scale(${1+nm*.12})`;
     $("glow").style.transform=`translate(-50%,-50%) scale(${1+p*.5})`;
     let x=lp(0,22,sg(p,.1,.17));x=lp(x,-22,sg(p,.30,.37));x=lp(x,22,sg(p,.50,.57));x=lp(x,0,sg(p,.70,.77));if(m)x=0;
